@@ -28,8 +28,11 @@ setup(
         "plotly>=5.17.0",
         "psutil>=5.9.0",
         "memory_profiler>=0.61.0",
+        "py3nvml>=0.2.7",
         "tqdm>=4.66.0",
+        "wandb>=0.15.0",
         "pyyaml>=6.0",
         "scipy>=1.11.0",
+        "datasets>=2.14.0",
     ],
 )

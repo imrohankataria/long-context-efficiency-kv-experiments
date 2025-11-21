@@ -155,9 +155,9 @@ class GPUMonitor:
             'reserved_mb': torch.cuda.memory_reserved() / 1024**2,
         }
         
-        # Try to get utilization if pynvml is available
+        # Try to get utilization if py3nvml is available
         try:
-            import pynvml
+            import py3nvml.py3nvml as pynvml
             pynvml.nvmlInit()
             handle = pynvml.nvmlDeviceGetHandleByIndex(0)
             util = pynvml.nvmlDeviceGetUtilizationRates(handle)
