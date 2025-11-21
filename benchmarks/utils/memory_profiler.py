@@ -157,13 +157,16 @@ class GPUMonitor:
         
         # Try to get utilization if py3nvml is available
         try:
-            import py3nvml.py3nvml as pynvml
+            # py3nvml package provides pynvml module
+            import pynvml
             pynvml.nvmlInit()
             handle = pynvml.nvmlDeviceGetHandleByIndex(0)
             util = pynvml.nvmlDeviceGetUtilizationRates(handle)
             stats['gpu_utilization_percent'] = util.gpu
             stats['memory_utilization_percent'] = util.memory
-        except:
+            pynvml.nvmlShutdown()
+        except (ImportError, Exception):
+            # py3nvml not installed or GPU not available
             pass
         
         self.stats.append(stats)
