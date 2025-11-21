@@ -209,7 +209,7 @@ class BenchmarkVisualizer:
         axes[1, 1].set_title('Memory Efficiency')
         axes[1, 1].grid(True, alpha=0.3)
         
-        plt.suptitle(title, fontsize=16, fontweight='bold', y=1.00)
+        plt.suptitle(title, fontsize=16, fontweight='bold', y=0.99)
         plt.tight_layout()
         
         if save_path:
@@ -319,7 +319,7 @@ class BenchmarkVisualizer:
         axes[1, 1].legend()
         axes[1, 1].grid(True, alpha=0.3)
         
-        plt.suptitle(title, fontsize=16, fontweight='bold', y=1.00)
+        plt.suptitle(title, fontsize=16, fontweight='bold', y=0.99)
         plt.tight_layout()
         
         if save_path:

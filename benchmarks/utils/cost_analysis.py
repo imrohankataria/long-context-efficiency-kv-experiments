@@ -212,25 +212,25 @@ class CostAnalyzer:
     def cost_efficiency_metrics(
         self,
         cost: float,
+        total_tokens: int,
         throughput_tokens_per_sec: float,
-        latency_ms: float,
     ) -> Dict:
         """
         Calculate cost efficiency metrics.
         
         Args:
             cost: Total cost
+            total_tokens: Total number of tokens processed
             throughput_tokens_per_sec: Throughput in tokens/sec
-            latency_ms: Latency in milliseconds
             
         Returns:
             Dictionary of efficiency metrics
         """
         # Cost per token
-        cost_per_token = cost / (throughput_tokens_per_sec * (latency_ms / 1000)) if throughput_tokens_per_sec > 0 else 0
+        cost_per_token = cost / total_tokens if total_tokens > 0 else 0
         
         # Tokens per dollar
-        tokens_per_dollar = 1 / cost_per_token if cost_per_token > 0 else 0
+        tokens_per_dollar = total_tokens / cost if cost > 0 else 0
         
         # Cost-adjusted throughput (tokens per second per dollar)
         cost_adjusted_throughput = throughput_tokens_per_sec / cost if cost > 0 else 0
